@@ -179,7 +179,7 @@ elif role == "Buyer / NGO Discovery":
                 st.write(f"**{d['merchant_name']}** — *{d['item_name']}*")
                 st.caption(f"Category: {d['category']} | {d['distance']} km away | Expires at: {d['expires_at'][:16]}")
             with c2:
-                price_tag = "FREE (Donation)" if d["price"] == 0 else f"${d['price']:.2f}"
+                price_tag = "FREE (Donation)" if d["price"] == 0 else f"₹{d['price']:.2f}"
                 st.markdown(f"### {price_tag}")
                 st.caption(f"{d['quantity']} units left")
             with c3:
