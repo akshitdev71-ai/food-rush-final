@@ -10,7 +10,7 @@ import streamlit as st
 from streamlit_folium import st_folium
 
 # --- DATABASE SETUP ---
-DB_NAME = "biteback.db"
+DB_NAME = "foodrush.db"
 
 def get_db_connection():
     conn = sqlite3.connect(DB_NAME, check_same_thread=False)
@@ -70,9 +70,9 @@ def generate_qr(data):
     return buf.getvalue()
 
 # --- APP CONFIG & NAVIGATION ---
-st.set_page_config(page_title="BiteBack | Food Rescue", page_icon="🍲", layout="wide")
+st.set_page_config(page_title="FoodRush | Food Rescue", page_icon="🍲", layout="wide")
 
-st.sidebar.title("🍲 BiteBack Network")
+st.sidebar.title("🍲 Food Rush Network")
 role = st.sidebar.radio("Select Portal View:", ["Buyer / NGO Discovery", "Merchant Drop Console", "Merchant QR Scanner"])
 
 # Default center: Local urban hub coords (Change to your hackathon venue)
@@ -91,7 +91,7 @@ if role == "Merchant Drop Console":
             category = st.selectbox("Category", ["Bakery & Pastry", "Cooked Meals", "Dairy & Deli", "Produce"])
             claim_type = st.radio("Access Rule", ["NGO Priority (Free for 20m, then Discounted)", "Consumer Flash Markdown"])
         with col2:
-            price = st.number_input("Discounted Price ($ / ₹)", min_value=0.0, value=3.0, step=0.5)
+            price = st.number_input("Discounted Price (₹)", min_value=0.0, value=70.0, step=0.5)
             quantity = st.number_input("Bags Available", min_value=1, value=4, step=1)
             expiry_minutes = st.slider("Window Closes In (Minutes)", 15, 120, 45)
             # Offset coords slightly to simulate real neighborhood businesses
